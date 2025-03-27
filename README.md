@@ -48,15 +48,15 @@ You can install Postman via this website: https://www.postman.com/downloads/
     (You might want to use `cargo check` if you only need to verify your work without running the app.)
 
 ## Mandatory Checklists (Publisher)
--   [ ] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
+-   [x] Clone https://gitlab.com/ichlaffterlalu/bambangshop to a new repository.
 -   **STAGE 1: Implement models and repositories**
-    -   [ ] Commit: `Create Subscriber model struct.`
-    -   [ ] Commit: `Create Notification model struct.`
-    -   [ ] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
-    -   [ ] Commit: `Implement add function in Subscriber repository.`
-    -   [ ] Commit: `Implement list_all function in Subscriber repository.`
-    -   [ ] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [x] Commit: `Create Subscriber model struct.`
+    -   [x] Commit: `Create Notification model struct.`
+    -   [x] Commit: `Create Subscriber database and Subscriber repository struct skeleton.`
+    -   [x] Commit: `Implement add function in Subscriber repository.`
+    -   [x] Commit: `Implement list_all function in Subscriber repository.`
+    -   [x] Commit: `Implement delete function in Subscriber repository.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
     -   [ ] Commit: `Create Notification service struct skeleton.`
     -   [ ] Commit: `Implement subscribe function in Notification service.`
@@ -77,6 +77,12 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+
+1. If we expect multiple types of observers with different implementations, then using an interface makes more sense. Based on the current implementation, all subscribers behavior is only store url and name, so there is no need to use a trait unless there will be different types of subscribers with different behaviors.
+
+2. Since url must be unique, using ```Vec``` would have extra checks for searching and deleting which is inefficient. So ```DashMap``` is the better choice because it automatically makes sure that url is unique.
+
+3. Singleton makes sure that there is only one instance in the entire app, but it doesn't provide automatic thread safety for modifications so we need to manually handle it. On the other hand, ```DashMap``` can handle this more efficiently. ```DashMap``` ensures thread safety without requiring explicit locking, plus it is ALREADY a Singleton since ```lazy_static!``` ensures only one instance exists. So we still need ```DashMap```, since Singleton alone doesn't solve concurrency efficiently.
 
 #### Reflection Publisher-2
 
