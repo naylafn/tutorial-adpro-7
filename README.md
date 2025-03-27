@@ -58,12 +58,12 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement delete function in Subscriber repository.`
     -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -85,5 +85,11 @@ This is the place for you to write reflections:
 3. Singleton makes sure that there is only one instance in the entire app, but it doesn't provide automatic thread safety for modifications so we need to manually handle it. On the other hand, ```DashMap``` can handle this more efficiently. ```DashMap``` ensures thread safety without requiring explicit locking, plus it is ALREADY a Singleton since ```lazy_static!``` ensures only one instance exists. So we still need ```DashMap```, since Singleton alone doesn't solve concurrency efficiently.
 
 #### Reflection Publisher-2
+
+1. We need to separate ```Service``` and ```Repository``` from a ```Model``` to implement SOLID principle, which makes the code easier to test, maintain, and flexible to change.
+
+2. I think the app will be strongly coupled and become even more complex, it violates the SRP already because the program model is doing too much. If we want to change how notifications are handled, we will need to modify all models that interact with notifications. So if we only use the ```Model```,  it will lead to complex code, duplication, and maintainability issues.
+
+3. Yes, I’ve explored Postman, and it’s a great tool for testing APIs efficiently. It is useful for my projects because it works for any backend (Django and Springboot), and it can improve my group project collaboration with shared API documentation.
 
 #### Reflection Publisher-3
