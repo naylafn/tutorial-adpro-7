@@ -65,11 +65,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
     -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-    -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-    -   [ ] Commit: `Implement publish function in Program service and Program controller.`
-    -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
+    -   [x] Commit: `Implement publish function in Program service and Program controller.`
+    -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -93,3 +93,9 @@ This is the place for you to write reflections:
 3. Yes, I’ve explored Postman, and it’s a great tool for testing APIs efficiently. It is useful for my projects because it works for any backend (Django and Springboot), and it can improve my group project collaboration with shared API documentation.
 
 #### Reflection Publisher-3
+
+1. Our Observer Pattern implementation use the Push Model variation, because after every change (creating, deleting, publishing) done to a product, it calls the ```notify``` function. The ```notify``` function directly pushes the entire ```Notification``` payload directly to the subscriber's update method.
+
+2. If we used Pull Model, when product has large data fields, instead of sending the entire product object to all subscribers like in Push Model, Pull Model only send an event notification, subscribers can fetch the full details only if they need them. So using Pull Model is more efficient if the product data is large or frequently updated.
+
+3. If we remove multi-threading from the notification process, the program will still function, but there will be significant performance and responsiveness issues. Instead of notifying all subscribers at the same time, the program will process them one by one, which will make the execution time very slow, and the main execution flow will pause until all subscribers are updated. If this happens inside an API request, the entire server response will be delayed.
